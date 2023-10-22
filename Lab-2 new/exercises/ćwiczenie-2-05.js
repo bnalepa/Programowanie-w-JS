@@ -14,11 +14,12 @@ function Car(model, brand, power){
     this.brand = brand;
     this.power = power;
 };
-
+Object.assign(Car.prototype,Vehicle());
 //zamień ten komentarz na instrukcję zgodnie z poleceniem
 
 //Testy
 let audi = new Car("A4", "Audi", 190);
+console.log(audi);
 if ("weight" in audi){
     console.log("Test 51 passed")
 } else {

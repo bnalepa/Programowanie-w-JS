@@ -13,22 +13,29 @@ console.log(word)
 function longestWord(sentence){
     if(sentence === "") return "empty";
     // the best
-    
-    //sentence.split(" ").reduce( (longest, word) => word.length > longest.length ? word : longest, "")
+/*
+    console.log(sentence.split(" "));
+    sentence.split(" ").reduce( (longest, word) => word.length > longest.length ? word : longest, "")
+ */
 
     sentence.split(" ").reduce( (longest, word) => { 
-        if(word.length > longest.length)
-        {
-            return word;
-        } else {
-            return longest;
-        }
+        
+            if(word.length > longest.length)
+            {
+                return word;
+            } else {
+                return longest;
+            }
+        
+        
     },"")
+   
+    
 
     //kod funkcji
 }
 
-
+//console.log(longestWord("Is this a fox"));
 //Testy
 if (longestWord("Is this a fox") === "this"){
     console.log("Test 41 passed")
