@@ -8,15 +8,28 @@
 
 let word = longestWord("Programowanie w JavaScript jest super")
 
-console.log(word)
+//console.log(word)
 
 function longestWord(sentence){
-    if(sentence === "") return "empty";
+    if (typeof sentence !== 'string' || sentence.trim() === "") {
+        return "";
+    }
+        const words = sentence.split(" "); 
+        let longest = words[0];
+    
+        for (let i = 1; i < words.length; i++) {
+            if (words[i].length > longest.length) {
+                longest = words[i];
+            }
+        }
+    
+        return longest;
+    }
     // the best
 /*
     console.log(sentence.split(" "));
     sentence.split(" ").reduce( (longest, word) => word.length > longest.length ? word : longest, "")
- */
+
 
     sentence.split(" ").reduce( (longest, word) => { 
         
@@ -29,12 +42,12 @@ function longestWord(sentence){
         
         
     },"")
-   
+    
     
 
     //kod funkcji
 }
-
+*/
 //console.log(longestWord("Is this a fox"));
 //Testy
 if (longestWord("Is this a fox") === "this"){
