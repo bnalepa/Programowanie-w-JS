@@ -12,8 +12,18 @@
  */
 
 function makeTransaction(transaction){
-    
+    if(!transaction.hasOwnProperty("amount")){
+        throw new Error(`Impossible to complete the transaction. Absent property amount in transaction!`)
+    } else if(!transaction.hasOwnProperty("sourceAccount")){
+        throw new Error(`Impossible to complete the transaction. Absent property sourceAccount in transaction!`)
+    } else if(!transaction.hasOwnProperty("targetAccount")){
+        throw new Error(`Impossible to complete the transaction. Absent property targetAccount in transaction!`)
+    } else if(transaction.amount < 0){
+        throw new Error(`Impossible to complete the transaction. Amount is negative!`)
+    } 
+
 }
+
 
 try {
     makeTransaction({amount: 20, sourceAccount: "1224", targetAccount: "2345"});
@@ -23,22 +33,22 @@ try {
 }
 try {
     makeTransaction({ amount: 20, sourceAccounts: "1224", targetAccount: "2345" });
-    console.log("Test 31 failed.");
+    console.log("Test 32 failed.");
 } catch (e) {
     if (e.message === 'Impossible to complete the transaction. Absent property sourceAccount in transaction!') {
-        console.log("Test 31 passed.")
+        console.log("Test 32 passed.")
     } else {
-        console.log("Test 31 failed.")
+        console.log("Test 32 failed.")
     }
 }
 
 try {
     makeTransaction({ amount: -20, sourceAccount: "1224", targetAccount: "2345" });
-    console.log("Test 31 failed.");
+    console.log("Test 33 failed.");
 } catch (e) {
     if (e.message === 'Impossible to complete the transaction. Amount is negative!') {
-        console.log("Test 31 passed.")
+        console.log("Test 33 passed.")
     } else {
-        console.log("Test 31 failed.")
+        console.log("Test 33 failed.")
     }
 }

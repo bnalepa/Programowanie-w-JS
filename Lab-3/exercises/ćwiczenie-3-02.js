@@ -3,7 +3,17 @@
  */
 
 function *evenNumbers(n, m){
-    
+    let num = n;
+    if(num % 2 == 1) num++;
+    while(num <= m){
+        yield num;
+        num += 2;
+    }
+}
+
+let evenNumbersIterators = evenNumbers();
+for(let item of evenNumbersIterators){
+    console.log(item);
 }
 
 let sum = 0;
