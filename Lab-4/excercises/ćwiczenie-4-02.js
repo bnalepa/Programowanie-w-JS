@@ -10,6 +10,19 @@
  */
 
 function union(a1, a2){
+    const set = new Set();
+    let firstSet = new Set();
+    let secondSet = new Set();
+    for(item of a1)
+    {
+        firstSet.add(item);
+    }
+    for(item of a2)
+    {
+        secondSet.add(item);
+    }
+
+    return firstSet;
 }
 
 const a1 = [...Array(100_000).keys()];
@@ -36,3 +49,6 @@ if (end - start < 20){
 } else {
     console.log("Test 22 failed");
 }
+console.log(r)
+
+end - start
