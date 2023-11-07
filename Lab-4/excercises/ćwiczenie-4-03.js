@@ -8,7 +8,21 @@
  */
 function frequences(str){
 
+    let map = new Map();
+    for(let i = 0; i<str.length; i++)
+    {
+        let letter = str[i];
+        if(map.has(letter))
+        {
+            map.set(letter, map.get(letter))
+        } else {
+            map.set(letter, 1)
+        }
+    }
+    return map;
 }
+
+console.log(frequences("abcdagcc"));
 
 try{
     const r = frequences("abcdagcc");
