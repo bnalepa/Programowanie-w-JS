@@ -1,34 +1,49 @@
 /**
- * Zdefiniuj klasę TodoTask opisująca zadanie do wykonania
- * Właściwości
- * - decription: opis tekstowy zadania
- * - deadline: ostateczny termin (data i czas) na wykonanie zadania
- * - finished: termin wykonania zadania
- * - done: pole logiczne oznaczające wykonanie zadania
- * - created: data i czas utworzenia zadania
- * Utworzone zadanie powinno:
- * - automatycznie dodawać bieżącą date i czas w polu created
- * - w polu done mieć wartość false
- * - w polu finished mieć wartość null
- * Próba utworzenia zadania z terminem z przeszłości w deadline powinno zgłosić błąd (wyjątek)
- * W utworzonym zadaniu:
- * - możliwa jest zmiana opisu (description)
- * - możliwa jest zmiana deadline pod warunkiem, że jest większy (późniejszy) od obecnej wartości tego pola
- * - możliwe jest ustawienie zadania jako wykonane (`done` na true), ale po 
- *   ustawieniu pola `done` na true nie można nic już zmienić (done, description, deadline itd.) 
- * - niemożliwe jest ustawianie pola finished, które powinno być automatycznie wypełniane (bieżąca data i czas) 
- *   podczas ustawiania pola done na true .
- * - niemożliwe jest ustawienia zadania jako wykonanego, jeśli bieżąca data jest późniejsza od deadline.
- * - zadanie po zatwierdzeniu lub po przekroczeniu deadlin'u nie może być zmieniane tzn.
- *   wywołanie któregokolwiek setter'a nie powinno nic zmieniać w zadaniu.
- *  Dopasuj konstruktor do przykładowego wywołania w testach.
+Zdefiniuj klasę TodoTask opisująca zadanie do wykonania
+Właściwości
+  - title: nazwa zadania
+  - description: opis tekstowy zadania
+  - deadline: ostateczny termin (data i czas) na wykonanie zadania
+  - finished: termin wykonania zadania, data ustawienia pola done na true
+  - done: pole logiczne oznaczające wykonanie zadania
+  - created: data i czas utworzenia zadania
+ Utworzone konstruktorem zadanie powinno:
+   - automatycznie dodawać bieżącą datę i czas w polu created
+   - w polu done mieć wartość false
+   - w polu finished mieć wartość null
+Próba utworzenia zadania z terminem z przeszłości w deadline powinno zgłosić błąd (wyjątek)
+W utworzonym zadaniu:
+ - możliwa jest zmiana opisu (description)
+ - możliwa jest zmiana deadline pod warunkiem, że jest większy (późniejszy) od bieżącej daty o jeden dzień, jeśli nie to należy zgłosić wyjątek
+ - możliwe jest ustawienie zadania jako wykonane (`done` na true) tylko raz, 
+ - niemożliwe jest ustawianie pola finished, które powinno być automatycznie wypełniane (bieżąca data i czas) w chwili ustawienie done na true
+ - niemożliwe jest ustawienia zadania jako wykonanego ( `done` na true), jeśli bieżąca data jest późniejsza od deadline.
+ - zadanie po zatwierdzeniu lub po przekroczeniu deadlin'u nie może być zmieniane tzn. wywołanie któregokolwiek setter'a powinno zgłaszać wyjątek.
+Parametry konstruktora
+- tytuł (title)
+- opis (description)
+- planowany termin zakończenia (deadline)
+- funkcję (callback bez argumentów) zwracający bieżącą datę
+Klasa ustawia datę zakończenia i utworzenia wywołując callback z konstruktora.
+Przykład korzystania z klasy:
+
+const task = new TodoTask("JavaScript","Nauczyć się JavaScript'u", new Date(Date.parse("2024-01-30T00:00:00")), () => new Date(Date.now()));
+console.log(task.title);
+console.log(task.description);
+console.log(task.done);
+console.log(task.created);
+task.done = true;
+console.log(task.finished);
+
+Uwaga
+
+Zamiast znaku '#' użyj '_' do tworzenia pól prywatnych klasy TodoTask.
+
+Zdefiniuj seter dla pola finished zgłaszający wyjątek
+
  */
 
-/*
-TO DO 
- - możliwe jest ustawienie zadania jako wykonane (`done` na true) tylko raz, 
 
-*/
 class TodoTask {
 
 
