@@ -8,13 +8,14 @@
  */
 function frequences(str){
 
+    str = [...str];
     let map = new Map();
     for(let i = 0; i<str.length; i++)
     {
         let letter = str[i];
         if(map.has(letter))
         {
-            map.set(letter, map.get(letter))
+            map.set(letter, map.get(letter)+1)
         } else {
             map.set(letter, 1)
         }
@@ -63,3 +64,30 @@ try {
 } catch (e) {
     console.log("Test 32 failed")
 }
+
+
+// TEST SET
+	
+const r = frequences("ąbc👍dągc👍c👍");
+console.log(r.size);
+console.log(r.get('ą'));
+console.log(r.get('b'));
+console.log(r.get('c'));
+console.log(r.get('👍'));
+
+console.log(r)
+
+// TEST SET v2
+
+
+/* const c1 = Math.floor(Math.random() * 1000);
+const c2 = Math.floor(Math.random() * 1000);
+const str = [...Array(c1).fill('a'), ...Array(c2).fill('b'), ...Array(10000).fill('h')].join("") ;
+const start = new Date();
+const r = frequences(str);
+const end = new Date();
+console.log(r.size);
+console.log(r.get('a') == c1);
+console.log(r.get('h') == 10000);
+console.log(r.get('b') == c2);
+console.log(end - start < 200); */
