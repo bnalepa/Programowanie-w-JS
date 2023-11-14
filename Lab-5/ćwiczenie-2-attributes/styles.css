@@ -1,0 +1,18 @@
+body{
+    color: darkmagenta;
+}
+.border{
+    border: 2px darkmagenta solid; ;
+
+}
+.red{
+    background: lightcoral;
+}
+.green{
+    color: lightgreen;
+}
+
+.tile{
+    width: 100px;
+    height: 100px;
+}
