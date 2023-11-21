@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>
+            Paragraf  1
+        </p>
+        <p>
+            Paragraf <span>2</span>
+        </p> 
+        <p>
+            Paragraf <span>3</span>
+        </p> 
+        <p>
+            Paragraf <span>5</span>
+        </p> 
+    </div style = "flex:3">
+
+    <div class = "tile red"></div>
+
+    <div class = "tile green"></div>
+    </div>
+    <script>
+        // za pomocą alert wyświetl tekst z wszystkich paragrafów
+        let arr = Array.from(document.querySelectorAll("p"));
+        let content = arr.reduce((output, item) => output + item.innerText, "")
+        //alert(content);
+
+        // nadaj drugiemu akapitowi klasę green
+        let greenP = document.querySelector("p:nth-child(2)");
+        greenP.setAttribute("class","green")
+            //greenP.classList.add('green');
+
+        // dodaj nowy paragrag za pierwszym pragrafem z klasą green
+        // z tekstem Paragraf 4 i klasą red
+        let firstElement = document.querySelector("p.green")
+
+        let newParagraph = document.createElement("p");
+        newParagraph.classList.add("red");
+        newParagraph.innerText = "Paragraf 4";
+        firstElement.after(newParagraph);
+
+        // dany jest obiekt 
+        /*
+        {
+            board: [['X','O','X'], ['O','X','X'], ['Z','O','O']]
+        }
+        Wygeneruj wygląd planszy dla board , aby każda komórka miała size
+        */
+        
+
+    </script>
+</body>
+</html>
