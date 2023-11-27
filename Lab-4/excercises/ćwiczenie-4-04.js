@@ -84,6 +84,3 @@ console.log(r[0].books.includes("CBA") && r[0].books.includes("ABC"));
 console.log(r[1].books.includes("ABC") && r[1].books.includes("OND"));
 console.log(r[2].books.includes("OND"));
 console.log(r[3].books.includes("ABC"));
-
-console.log(r[0]);
-console.log(c1 + c2);

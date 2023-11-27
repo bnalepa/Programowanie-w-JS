@@ -12,22 +12,24 @@ window.onload = function(){
         for(let item of links){
             const div = document.createElement("div");
             const image = document.createElement("img");
+            gallery.appendChild(div);
             image.setAttribute("src", item);
             image.setAttribute("width", 150);
             image.classList.add("image");
-            gallery.appendChild(image);
+            div.appendChild(image);
 
             const deleteButton = document.createElement("input");
             deleteButton.classList.add("deleteButton");
             deleteButton.setAttribute("type", "button")
             deleteButton.setAttribute("value","Delete")
-            gallery.appendChild(deleteButton);  
+            div.appendChild(deleteButton);  
+            
         }
     }
 
     function deleteImage(event)
     {
-        const img = event.target;
+        const img = event.target.parentElement.children[0];
         links.delete(img.src);
         renderGallery();
 
@@ -54,20 +56,34 @@ window.onload = function(){
         inputAnswer.setAttribute("name","answer");
         inputAnswer.setAttribute("type","text");
         const isValid = document.createElement("input");
-        inputAnswer.setAttribute("name","valid");
-        inputAnswer.setAttribute("type","checkbox");
-        addAnswerButton.before(isValid);
-        addAnswerButton.before(inputAnswer);
+        isValid.setAttribute("name","valid");
+        isValid.setAttribute("type","checkbox");
         
+        addAnswerButton.before(inputAnswer);
+        addAnswerButton.before(isValid);
     }
     const isValidForm = () => {
         // zwróć true, jeśli jest co najmniej 3 elemetu typu answer
         // i choć jeden element vaild jest checked 
-        console.log("answer",testForm.answer)
+
+        const answerElements = testForm.answer.length;
+        let isChecked = false;
+        if(document.forms.test.valid.nextSibling == undefined)
+        {
+            for(let i of document.forms.test.valid)
+            {
+                if(i.checked) isChecked = true;
+            }
+        }
+        
+
+        if(answerElements >= 3 && isChecked)
+        return true;
+
         return false;
     }
     testForm.addEventListener("submit", function(e){
-        if(!isValid()){
+        if(!isValidForm()){
             e.preventDefault(); // nie zostanie wysłane
         }
     })
