@@ -67,7 +67,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
 function createTable(response)
 {
     const table = document.getElementById("users");
-    
+    table.innerHTML = "<tr><th> Name </th><th> Username </th><th> Email </th></tr>"
     for(let item of response)
     {
         const dataToPrint = [item.name, item.username, item.email];
